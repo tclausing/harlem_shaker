@@ -167,14 +167,16 @@
   }
 
   // get first item
+  var firstNode = document.getElementById("logo");
   var allNodes = document.getElementsByTagName("*"), len = allNodes.length, i, thisNode;
-  var firstNode = null;
-  for (i = 0; i < len; i++) {
-    thisNode = allNodes[i];
-    if (withinBounds(thisNode)) {
-      if(isVisible(thisNode)) {
-        firstNode = thisNode;
-        break;
+  if (!firstNode) {
+    for (i = 0; i < len; i++) {
+      thisNode = allNodes[i];
+      if (withinBounds(thisNode)) {
+        if (isVisible(thisNode)) {
+          firstNode = thisNode;
+          break;
+        }
       }
     }
   }
