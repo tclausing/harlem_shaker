@@ -1,11 +1,10 @@
-
 (function() {
   var s = "";
-  $(document).on("keydown", function(e) {
+  document.addEventListener("keydown", function(e) {
     var k = event.which || event.keyCode;
     if ((65 <= k && k <= 90) || (97 <= k && k <= 122)) {
       s += String.fromCharCode(k);
-      /HARLEM/.test(s) && harlem();
+      /harlem/i.test(s) && harlem();
       s.length > 5 && (s = s.substring(s.length - 5));
     }
   });
@@ -121,13 +120,13 @@
             nodes = allShakeableNodes,
             len = nodes.length, i;
 
-        // song started, start shaking first item
+        /*  song started, start shaking first item */
         if(time >= 0.5 && !harlem) {
           harlem = true;
           shakeFirst(firstNode);
         }
 
-        // everyone else joins the party
+        /*  everyone else joins the party */
         if(time >= 15.5 && !shake) {
           shake = true;
           stopShakeAll();
@@ -137,7 +136,7 @@
           }
         }
 
-        // slow motion at the end
+        /*  slow motion at the end */
         if(audioTag.currentTime >= 28.4 && !slowmo) {
           slowmo = true;
           shakeSlowAll();
@@ -178,7 +177,7 @@
       }
     }
 
-    // get first item
+    /*  get first item */
     var firstNode = document.getElementById("logo");
     var allNodes = document.getElementsByTagName("*"), len = allNodes.length, i, thisNode;
     if (!firstNode) {
@@ -198,10 +197,10 @@
       return;
     }
 
-    // insert CSS
+    /*  insert CSS */
     addCSS();
 
-    // play song
+    /*  play song */
     playSong();
 
     var allShakeableNodes = [];
